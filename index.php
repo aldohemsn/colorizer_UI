@@ -2,7 +2,7 @@
 include 'functions.php';
 ?>
 
-<title>巧言·点色 - 学外语可以来点颜色</title>
+<title>巧言·点色 - 词性颜色标注与高级隐藏/显示交互</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
 
