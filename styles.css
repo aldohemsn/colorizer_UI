@@ -1,0 +1,123 @@
+body {
+    font-family: Georgia, "Apple Color Emoji", "Segoe UI Emoji";
+    padding: 16px; 
+    font-size: 1.2rem; 
+}
+
+p {
+    line-height: 1; 
+}
+
+.sentence-id {
+    margin-right: 16px; 
+}
+
+textarea {
+    height: 180px; 
+    padding: 12px; 
+    margin-bottom: 18px; 
+    border-radius: 9px; 
+    font-size: 1.5rem; 
+    width: 100%;
+}
+
+select, input[type="submit"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+select {
+    padding: 6px 18px; 
+    font-size: 1.5rem; 
+    border-radius: 9px; 
+}
+
+input[type="submit"] {
+    padding: 12px 18px; 
+    border-radius: 9px; 
+    font-size: 1.5rem; 
+    background-color: #007BFF;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    color: white;
+    background-color: white !important;
+}
+
+.word {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 1.5rem; 
+    border-radius: 5px; 
+    line-height: 1.5em; 
+}
+
+.word:hover {
+    background-color: #FFD700;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #007BFF;
+    color: #FFF;
+    padding: 20px 0;
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+#usageBanner {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #FFF;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-size: 1.2rem;
+    margin-left: 10px;  /* Add some space between the button and the link */
+}
+
+#usageBanner:hover {
+    background-color: #0056b3;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 1.5rem; 
+        padding: 8px;
+    }
+    textarea, select, input[type="submit"] {
+        margin-bottom: 10px;
+    }
+    #usageBanner {
+        display: none;
+    }
+}
+

@@ -1,0 +1,117 @@
+<?php
+include 'functions.php';
+?>
+
+<title>巧言·点色 - 学外语可以来点颜色</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+
+<header>
+    <h1>巧言·点色</h1>
+    <h2>给外语来点颜色</h2>
+</header>
+
+<form method="POST" class="noselect">
+    <textarea name="text" placeholder="<?= htmlspecialchars($jsonData['en']['defaultSentence']); ?>"><?= htmlspecialchars($userText); ?></textarea>
+    <select name="language">
+        <?php foreach ($languages as $lang): ?>
+            <option value="<?= $lang ?>" <?= ($language == $lang) ? 'selected' : ''; ?>><?= ucfirst($lang) ?></option>
+        <?php endforeach; ?>
+    </select>
+    <input type="submit" value="点色">
+    <a href="#" id="usageBanner">用法</a>
+</form>
+
+<div id="usageInfo" style="display:none;">
+    <p>1. 单击：在页面上，每个单词都有一个背景颜色，这个颜色与该单词的词性有关。当单击某个单词时，同一句子中与该单词相关的其他单词都将隐藏/显示。</p>
+    <p>2. 按住Ctrl键（Mac里是Command键）：当按住Ctrl键并点击某个单词时，同一句子中与该单词不相关的其他单词都将在隐藏/显示。</p>
+    <p>3. 同时按住Shift键和Ctrl键（Mac里是Shift键和Command键）：当同时按住这两个键并点击某个单词时，整个文档中与该单词不相关的其他单词都将隐藏/显示。</p>
+    <p>4. 单击各段段首的行号：可以重置该段落中所有单词的颜色，并显示之前可能被隐藏的单词。</p>
+    <p>5. 超过500字符的：如果输入的文本超过500字符，超过的文本将被舍弃。</p>
+</div>
+
+<div class="noselect">
+    <?= $colorizedHtml; ?>
+</div>
+
+<script src="./jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        const defaultSentences = {
+            'en': <?= json_encode($jsonData['en']['defaultSentence']); ?>,
+            'es': <?= json_encode($jsonData['es']['defaultSentence']); ?>,
+            'fr': <?= json_encode($jsonData['fr']['defaultSentence']); ?>
+        };
+
+        $('select[name="language"]').change(function() {
+            const language = $(this).val();
+            $('textarea[name="text"]').val(defaultSentences[language]).attr('placeholder', defaultSentences[language]);
+        });
+
+        $('.word').on('mouseenter', function() {
+            const pos = $(this).data('pos');
+            $(this).attr('title', 'POS: ' + pos);
+        }).on('click', function(e) {
+    const pos = $(this).data('pos').toLowerCase();
+    let relatedTags = [];
+
+    // Loop over the buttons configuration to find related tags
+    const buttonsConfig = <?= json_encode($jsonData[$language]['buttons']); ?>;
+    buttonsConfig.forEach(button => {
+        if (button.tags.includes(pos)) {
+            relatedTags = relatedTags.concat(button.tags);
+        }
+    });
+
+    const sentenceElement = $(this).closest('p');
+
+    if (e.shiftKey && e.ctrlKey) {
+        // Shift+Ctrl+click will hide/show words that are not in the relatedTags group across the entire document.
+        $('.word').each(function() {
+            if (!relatedTags.includes($(this).data('pos').toLowerCase())) {
+                $(this).toggleClass('hidden');
+            }
+        });
+    } else if (e.ctrlKey) {
+        // Ctrl+click will hide/show words that are not in the relatedTags group within the same sentence.
+        sentenceElement.find('span.word').each(function() {
+            if (!relatedTags.includes($(this).data('pos').toLowerCase())) {
+                $(this).toggleClass('hidden');
+            }
+        });
+    } else {
+        // A regular click will hide/show words that are within the relatedTags group in the same sentence.
+        sentenceElement.find('span.word').each(function() {
+            if (relatedTags.includes($(this).data('pos').toLowerCase())) {
+                $(this).toggleClass('hidden');
+            }
+        });
+    }
+});
+
+        document.addEventListener('dblclick', function(e){
+            e.preventDefault();
+        }, false);
+
+        $('.sentence-id').on('click', function() {
+            const sentenceElement = $(this).closest('p');
+            sentenceElement.find('span.word').each(function() {
+                const pos = $(this).data('pos');
+                const defaultColor = <?= json_encode($jsonData[$language]['colors']); ?>[pos] || '#FFFFFF';
+                $(this).css('background-color', defaultColor).removeClass('hidden');
+            });
+        });  
+    });
+
+    document.getElementById('usageBanner').addEventListener('click', function(e) {
+    e.preventDefault();
+    var usageInfo = document.getElementById('usageInfo');
+    if (usageInfo.style.display === 'none') {
+        usageInfo.style.display = 'block';
+    } else {
+        usageInfo.style.display = 'none';
+    }
+});
+</script>
+
