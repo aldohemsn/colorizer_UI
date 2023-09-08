@@ -1,6 +1,6 @@
 * * *
 
-巧言·点色 - 学外语可以来点颜色
+巧言·点色 - 给外语来点颜色
 =============
 
 A simple PHP-based colorizer tool.
