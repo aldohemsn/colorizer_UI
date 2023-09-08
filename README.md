@@ -3,47 +3,47 @@
 巧言·点色 - 给外语来点颜色
 =============
 
-A simple PHP-based colorizer tool.
+这是一个基于PHP的简单颜色标注工具。
 
-Files in the Repository
+仓库中的文件
 -----------------------
 
-* `.replit`: Configuration file for Replit.
-* `Dockerfile`: Docker configuration for setting up the environment.
-* `custom.conf`: Custom configuration file.
-* `en.json`, `es.json`, `fr.json`: Language-specific JSON files.
-* `index.php`: Main PHP file for the application.
-* `replit.nix`: Configuration for Replit Nix environment.
-* `start.sh`: Shell script to start the application.
+* `.replit`: Replit的配置文件。
+* `Dockerfile`: 设置环境的Docker配置。
+* `custom.conf`: 自定义配置文件。
+* `en.json`, `es.json`, `fr.json`: 针对特定语言的JSON文件。
+* `index.php`: 应用程序的主要PHP文件。
+* `replit.nix`: Replit Nix环境的配置。
+* `start.sh`: 启动应用程序的Shell脚本。
 
-Environment Variables
+环境变量
 ---------------------
 
-To run the application, you'll need to set the following environment variables:
+要运行应用程序，您需要设置以下环境变量：
 
-* `CORENLP_URL`: URL for the CoreNLP service.
-* `CORENLP_USER`: User for the CoreNLP service.
-* `CORENLP_PASSWORD`: Password for the CoreNLP service.
-* `AUTH_USER`: Username for Apache authentication.
-* `AUTH_PASS`: Password for Apache authentication.
+* `CORENLP_URL`: CoreNLP服务的URL。
+* `CORENLP_USER`: CoreNLP服务的用户。
+* `CORENLP_PASSWORD`: CoreNLP服务的密码。
+* `AUTH_USER`: Apache认证的用户名。
+* `AUTH_PASS`: Apache认证的密码。
 
-Getting Started
+开始使用
 ---------------
 
-1. Clone the repository:
-    
+1. 克隆仓库:
+
     ```bash
     git clone https://github.com/aldohemsn/colorizer_PHP.git
     ```
-    
-2. Navigate to the repository directory:
-    
+
+2. 导航到仓库目录:
+
     ```bash
     cd colorizer_PHP
     ```
-    
-3. If using Docker, build and run the Docker container:
-    
+
+3. 如果使用Docker，构建并运行Docker容器:
+
     ```bash
     docker build -t colorizer_php_app .
     docker run -p 8080:80 \
@@ -54,10 +54,10 @@ Getting Started
     -e AUTH_PASS='apache_password' \
     colorizer_php_app
     ```
-    
-4. Access the application via your browser at `http://localhost:8080`.
-    
 
-Contributing
+4. 通过浏览器访问应用程序 `http://localhost:8080`。
+
+贡献
 ------------
+
 # colorizer_UI
