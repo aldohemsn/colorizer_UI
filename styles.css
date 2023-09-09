@@ -130,6 +130,28 @@ header h2 {
     background-color: #0056b3;
 }
 
+#buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#returnButton, #restoreAll {
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-size: 1.5rem;
+    background-color: #007BFF;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    flex: 1; /* Allow buttons to take equal width */
+    margin: 0 10px; /* Add some margin between the buttons */
+    text-align: center;
+}
+
+#returnButton:hover, #restoreAll:hover {
+    background-color: #0056b3;
+}
 
 @media only screen and (max-width: 600px) {
     body {

@@ -32,8 +32,10 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
 
 <div class="noselect" id="colorizedOutput" style="<?= (isset($colorizedHtml) && !empty($colorizedHtml)) ? '' : 'display:none;' ?>">
     <?= $colorizedHtml; ?>
-    <button id="returnButton">再来一次</button>
-    <button id="restoreAll">恢复全部</button> <!-- Add this line for the restoreAll button -->
+    <div id="buttonGroup"> <!-- Add this div to group the buttons -->
+        <button id="restoreAll">重置</button>
+        <button id="returnButton">返回</button>
+    </div>
 </div>
 
 <script src="./jquery.min.js"></script>
