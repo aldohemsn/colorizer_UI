@@ -29,7 +29,7 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
     <input type="submit" value="点色" id="submitButton">
 </form>
 
-<a href="#" id="usageBanner">用法</a>
+<a href="#" id="usageBanner" id="usageBannerContent">用法</a>
 
 <div id="usageInfo" style="display:none;" class="noselect">
     <?php foreach ($usageInfoData['usageInstructions'] as $instruction): ?>
@@ -122,6 +122,10 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
             } else {
                 usageInfo.style.display = 'none';
             }
+        });
+
+        document.getElementById('usageInfo').addEventListener('click', function() {
+            this.style.display = 'none';
         });
 
         $('#returnButton').on('click', function() {
