@@ -33,6 +33,7 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
 <div class="noselect" id="colorizedOutput" style="<?= (isset($colorizedHtml) && !empty($colorizedHtml)) ? '' : 'display:none;' ?>">
     <?= $colorizedHtml; ?>
     <button id="returnButton">再来一次</button>
+    <button id="restoreAll">恢复全部</button> <!-- Add this line for the restoreAll button -->
 </div>
 
 <script src="./jquery.min.js"></script>
@@ -117,6 +118,14 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
         $('#returnButton').on('click', function() {
             $('#colorizedOutput').hide();
             $('#inputBox').show();
+        });
+
+        $('#restoreAll').on('click', function() {
+            $('.word').each(function() {
+            const pos = $(this).data('pos');
+            const defaultColor = <?= json_encode($jsonData[$language]['colors']); ?>[pos] || '#FFFFFF';
+            $(this).css('background-color', defaultColor).removeClass('hidden');
+            });
         });
     });
 </script>
