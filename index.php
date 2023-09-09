@@ -1,5 +1,6 @@
 <?php
 include 'functions.php';
+$usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
 ?>
 
 <title>巧言·点色 - 词性颜色标注与高级隐藏/显示交互</title>
@@ -8,7 +9,7 @@ include 'functions.php';
 
 <header>
     <h1>巧言·点色</h1>
-    <h2>给外语来点颜色</h2>
+    <h2>给语言来点颜色</h2>
 </header>
 
 <form method="POST" class="noselect">
@@ -23,12 +24,9 @@ include 'functions.php';
 </form>
 
 <div id="usageInfo" style="display:none;">
-    <p>1. 单击某个单词，同一句子中与该单词相关的其他单词都将隐藏/显示。</p>
-    <p>2. 按住Ctrl键（Mac里是Command键）并点击某个单词，同一句子中与该单词不相关的其他单词都将在隐藏/显示。</p>
-    <p>3. 同时按住Shift键和Ctrl键（Mac里是Command键）并点击某个单词时，整个文档中与该单词不相关的其他单词都将隐藏/显示。</p>
-    <p>4. 单击各段段首的行号，可以重置该段落中所有单词。</p>
-    <p>5. 超过500字符的：如果输入的文本超过500字符，超过的文本将被舍弃。</p>
-    <p>以上2、3条需要使用键盘完成。</p>
+    <?php foreach ($usageInfoData['usageInstructions'] as $instruction): ?>
+        <p><?= $instruction; ?></p>
+    <?php endforeach; ?>
 </div>
 
 <div class="noselect">
