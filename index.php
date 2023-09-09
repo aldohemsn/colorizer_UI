@@ -12,24 +12,25 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
     <h2>给语言来点颜色</h2>
 </header>
 
-<form method="POST" class="noselect">
+<form method="POST" class="noselect" id="inputBox">
     <textarea name="text" placeholder="<?= htmlspecialchars($jsonData['en']['defaultSentence']); ?>"><?= htmlspecialchars($userText); ?></textarea>
     <select name="language">
         <?php foreach ($languages as $lang): ?>
             <option value="<?= $lang ?>" <?= ($language == $lang) ? 'selected' : ''; ?>><?= ucfirst($lang) ?></option>
         <?php endforeach; ?>
     </select>
-    <input type="submit" value="点色">
-    <a href="#" id="usageBanner">用法</a>
+    <input type="submit" value="点色" id="submitButton">
 </form>
 
-<div id="usageInfo" style="display:none;">
+<a href="#" id="usageBanner">用法</a>
+
+<div id="usageInfo" style="display:none;" class="noselect">
     <?php foreach ($usageInfoData['usageInstructions'] as $instruction): ?>
         <p><?= $instruction; ?></p>
     <?php endforeach; ?>
 </div>
 
-<div class="noselect">
+<div class="noselect" id="colorizedOutput">
     <?= $colorizedHtml; ?>
 </div>
 
