@@ -15,8 +15,15 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
 <form method="POST" class="noselect" id="inputBox" style="<?= (isset($colorizedHtml) && !empty($colorizedHtml)) ? 'display:none;' : '' ?>">
     <textarea name="text" placeholder="<?= htmlspecialchars($jsonData['en']['defaultSentence']); ?>"><?= htmlspecialchars($userText); ?></textarea>
     <select name="language">
-        <?php foreach ($languages as $lang): ?>
-            <option value="<?= $lang ?>" <?= ($language == $lang) ? 'selected' : ''; ?>><?= ucfirst($lang) ?></option>
+        <?php 
+        $languageNames = [
+            'en' => '英文',
+            'es' => '西班牙文',
+            'fr' => '法文'
+        ];
+        foreach ($languages as $lang): 
+        ?>
+            <option value="<?= $lang ?>" <?= ($language == $lang) ? 'selected' : ''; ?>><?= $languageNames[$lang] ?? ucfirst($lang) ?></option>
         <?php endforeach; ?>
     </select>
     <input type="submit" value="点色" id="submitButton">
