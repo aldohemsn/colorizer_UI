@@ -93,20 +93,24 @@ header h2 {
 }
 
 #usageBanner {
-    display: inline-block;
+    display: block;
     padding: 10px 20px;
-    background-color: #007BFF;
-    color: #FFF;
+    background-color: transparent; /* Remove the background color */
+    color: #007BFF; /* Use the primary color for the text */
+    border: 2px solid #007BFF; /* Add a border to make it stand out */
     border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s; /* Add transition for color as well */
     font-size: 1.2rem;
-    margin-left: 10px;  /* Add some space between the button and the link */
+    margin: 20px auto; /* Center the banner */
+    text-align: center; /* Ensure the text is centered */
 }
 
 #usageBanner:hover {
-    background-color: #0056b3;
+    background-color: #007BFF; /* Change background on hover */
+    color: #FFF; /* Change text color on hover */
 }
+
 
 @media only screen and (max-width: 600px) {
     body {
