@@ -12,7 +12,7 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
     <h2>给语言来点颜色</h2>
 </header>
 
-<form method="POST" class="noselect" id="inputBox">
+<form method="POST" class="noselect" id="inputBox" style="<?= (isset($colorizedHtml) && !empty($colorizedHtml)) ? 'display:none;' : '' ?>">
     <textarea name="text" placeholder="<?= htmlspecialchars($jsonData['en']['defaultSentence']); ?>"><?= htmlspecialchars($userText); ?></textarea>
     <select name="language">
         <?php foreach ($languages as $lang): ?>
@@ -30,8 +30,9 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
     <?php endforeach; ?>
 </div>
 
-<div class="noselect" id="colorizedOutput">
+<div class="noselect" id="colorizedOutput" style="<?= (isset($colorizedHtml) && !empty($colorizedHtml)) ? '' : 'display:none;' ?>">
     <?= $colorizedHtml; ?>
+    <button id="returnButton">再来一次</button>
 </div>
 
 <script src="./jquery.min.js"></script>
@@ -53,44 +54,44 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
             const pos = $(this).data('pos');
             $(this).attr('title', 'POS: ' + pos);
         }).on('click', function(e) {
-    const pos = $(this).data('pos').toLowerCase();
-    let relatedTags = [];
+            const pos = $(this).data('pos').toLowerCase();
+            let relatedTags = [];
 
-    // Loop over the buttons configuration to find related tags
-    const buttonsConfig = <?= json_encode($jsonData[$language]['buttons']); ?>;
-    buttonsConfig.forEach(button => {
-        if (button.tags.includes(pos)) {
-            relatedTags = relatedTags.concat(button.tags);
-        }
-    });
+            // Loop over the buttons configuration to find related tags
+            const buttonsConfig = <?= json_encode($jsonData[$language]['buttons']); ?>;
+            buttonsConfig.forEach(button => {
+                if (button.tags.includes(pos)) {
+                    relatedTags = relatedTags.concat(button.tags);
+                }
+            });
 
-    const sentenceElement = $(this).closest('p');
+            const sentenceElement = $(this).closest('p');
 
-    if (e.shiftKey && e.ctrlKey) {
-        // Shift+Ctrl+click will hide/show words that are not in the relatedTags group across the entire document.
-        $('.word').each(function() {
-            if (!relatedTags.includes($(this).data('pos').toLowerCase())) {
-                $(this).toggleClass('hidden');
+            if (e.shiftKey && e.ctrlKey) {
+                // Shift+Ctrl+click will hide/show words that are not in the relatedTags group across the entire document.
+                $('.word').each(function() {
+                    if (!relatedTags.includes($(this).data('pos').toLowerCase())) {
+                        $(this).toggleClass('hidden');
+                    }
+                });
+            } else if (e.ctrlKey) {
+                // Ctrl+click will hide/show words that are not in the relatedTags group within the same sentence.
+                sentenceElement.find('span.word').each(function() {
+                    if (!relatedTags.includes($(this).data('pos').toLowerCase())) {
+                        $(this).toggleClass('hidden');
+                    }
+                });
+            } else {
+                // A regular click will hide/show words that are within the relatedTags group in the same sentence.
+                sentenceElement.find('span.word').each(function() {
+                    if (relatedTags.includes($(this).data('pos').toLowerCase())) {
+                        $(this).toggleClass('hidden');
+                    }
+                });
             }
         });
-    } else if (e.ctrlKey) {
-        // Ctrl+click will hide/show words that are not in the relatedTags group within the same sentence.
-        sentenceElement.find('span.word').each(function() {
-            if (!relatedTags.includes($(this).data('pos').toLowerCase())) {
-                $(this).toggleClass('hidden');
-            }
-        });
-    } else {
-        // A regular click will hide/show words that are within the relatedTags group in the same sentence.
-        sentenceElement.find('span.word').each(function() {
-            if (relatedTags.includes($(this).data('pos').toLowerCase())) {
-                $(this).toggleClass('hidden');
-            }
-        });
-    }
-});
 
-        document.addEventListener('dblclick', function(e){
+        document.addEventListener('dblclick', function(e) {
             e.preventDefault();
         }, false);
 
@@ -101,17 +102,25 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
                 const defaultColor = <?= json_encode($jsonData[$language]['colors']); ?>[pos] || '#FFFFFF';
                 $(this).css('background-color', defaultColor).removeClass('hidden');
             });
-        });  
+        });
+
+        document.getElementById('usageBanner').addEventListener('click', function(e) {
+            e.preventDefault();
+            var usageInfo = document.getElementById('usageInfo');
+            if (usageInfo.style.display === 'none') {
+                usageInfo.style.display = 'block';
+            } else {
+                usageInfo.style.display = 'none';
+            }
+        });
+
+        $('#submitButton').on('click', function() {
+            // No need to prevent default anymore
+        });
+
+        $('#returnButton').on('click', function() {
+            $('#colorizedOutput').hide();
+            $('#inputBox').show();
+        });
     });
-
-    document.getElementById('usageBanner').addEventListener('click', function(e) {
-    e.preventDefault();
-    var usageInfo = document.getElementById('usageInfo');
-    if (usageInfo.style.display === 'none') {
-        usageInfo.style.display = 'block';
-    } else {
-        usageInfo.style.display = 'none';
-    }
-});
 </script>
-
