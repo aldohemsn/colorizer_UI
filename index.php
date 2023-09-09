@@ -114,10 +114,6 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
             }
         });
 
-        $('#submitButton').on('click', function() {
-            // No need to prevent default anymore
-        });
-
         $('#returnButton').on('click', function() {
             $('#colorizedOutput').hide();
             $('#inputBox').show();
