@@ -4,6 +4,10 @@ body {
     font-size: 1.2rem; 
 }
 
+#inputBox textarea {
+    font-family: Georgia, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
 p {
     line-height: 1; 
 }
