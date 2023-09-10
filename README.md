@@ -1,6 +1,6 @@
 * * *
 
-巧言·点色 - 给外语来点颜色
+巧言·点色 - 给语言来点颜色
 =============
 
 这是一个基于PHP的简单颜色标注工具。
@@ -33,13 +33,13 @@
 1. 克隆仓库:
 
     ```bash
-    git clone https://github.com/aldohemsn/colorizer_PHP.git
+    git clone https://github.com/aldohemsn/colorizer_UI.git
     ```
 
 2. 导航到仓库目录:
 
     ```bash
-    cd colorizer_PHP
+    cd colorizer_UI
     ```
 
 3. 如果使用Docker，构建并运行Docker容器:

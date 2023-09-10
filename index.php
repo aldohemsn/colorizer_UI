@@ -36,10 +36,25 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
 <!-- Usage banner and instructions -->
 <a href="#" id="usageBanner" id="usageBannerContent">用法</a>
 <div id="usageInfo" style="display:none;" class="noselect">
-    <?php foreach ($usageInfoData['usageInstructions'] as $instruction): ?>
-        <p><?= $instruction; ?></p>
-    <?php endforeach; ?>
+    <h3>简介</h3>
+    <p><?= $usageInfoData['usageInstructions'][0]; ?></p>
+
+    <h3>主要功能</h3>
+    <?php for ($i = 1; $i <= 4; $i++): ?>
+        <p><?= $usageInfoData['usageInstructions'][$i]; ?></p>
+    <?php endfor; ?>
+
+    <h3>目标用户与用途</h3>
+    <?php for ($i = 5; $i <= 9; $i++): ?>
+        <p><?= $usageInfoData['usageInstructions'][$i]; ?></p>
+    <?php endfor; ?>
+
+    <h3>使用说明</h3>
+    <?php for ($i = 10; $i < count($usageInfoData['usageInstructions']); $i++): ?>
+        <p><?= $usageInfoData['usageInstructions'][$i]; ?></p>
+    <?php endfor; ?>
 </div>
+
 
 <!-- Display colorized output -->
 <div class="noselect" id="colorizedOutput" style="<?= (isset($colorizedHtml) && !empty($colorizedHtml)) ? '' : 'display:none;' ?>">
