@@ -10,11 +10,17 @@
 
 * `.replit`: Replit的配置文件。
 * `Dockerfile`: 设置环境的Docker配置。
+* `README.md`: 项目的README文件。
+* `apache2-utils_2.4.57-2_amd64.deb`: Apache工具包。
 * `custom.conf`: 自定义配置文件。
 * `en.json`, `es.json`, `fr.json`: 针对特定语言的JSON文件。
+* `functions.php`: 功能性PHP文件。
 * `index.php`: 应用程序的主要PHP文件。
+* `jquery.min.js`: jQuery库文件。
 * `replit.nix`: Replit Nix环境的配置。
 * `start.sh`: 启动应用程序的Shell脚本。
+* `styles.css`: 样式表文件。
+* `usageInfo.json`: 使用信息的JSON文件。
 
 环境变量
 ---------------------
