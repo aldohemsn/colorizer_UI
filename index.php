@@ -39,7 +39,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
 </form>
 
 <!-- Usage banner and instructions -->
-<a href="#" id="usageBanner" id="usageBannerContent">用法</a>
+<a href="#" id="usageBanner" id="usageBannerContent">说明</a>
 <div id="usageInfo" style="display:none;" class="noselect">
     <?php foreach ($usageInfoData->children() as $instruction): ?>
         <?php if ($instruction->getName() == "subtitle"): ?>
@@ -59,6 +59,8 @@ $usageInfoData = simplexml_load_string($xmlContent);
         <button id="returnButton">返回</button>
     </div>
 </div>
+
+<p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #888;">请使用电脑体验完整功能</p>
 
 <!-- Include jQuery and custom scripts -->
 

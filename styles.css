@@ -170,17 +170,3 @@ header h2 {
     background-color: #0056b3;
 }
 
-/* Media query for screen sizes up to 600px */
-@media only screen and (max-width: 600px) {
-    body {
-        font-size: 1.5rem;           /* Increase font size for smaller screens */
-        padding: 8px;                /* Reduce padding for smaller screens */
-    }
-    textarea, select, input[type="submit"] {
-        margin-bottom: 10px;         /* Adjust margin for smaller screens */
-    }
-    #usageBanner {
-        display: none;               /* Hide the usage banner on smaller screens */
-    }
-}
-
