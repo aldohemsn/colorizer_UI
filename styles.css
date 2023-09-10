@@ -1,8 +1,29 @@
 body {
-    font-family: Georgia, "Apple Color Emoji", "Segoe UI Emoji";
-    padding: 16px; 
-    font-size: 1.2rem; 
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    font-size: 1.2rem;
+    background: linear-gradient(to right, #6A82FB, #FC5C7D);
 }
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #FC5C7D;
+    color: #FFF;
+    padding: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"], #returnButton, #restoreAll {
+    background-color: #6A82FB;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover, #returnButton:hover, #restoreAll:hover {
+    background-color: #4A62D1;
+}
+
 
 #inputBox textarea {
     font-family: Georgia, "Apple Color Emoji", "Segoe UI Emoji";

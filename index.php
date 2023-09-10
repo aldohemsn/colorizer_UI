@@ -129,8 +129,9 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
         });
 
         $('#returnButton').on('click', function() {
-            $('#colorizedOutput').hide();
-            $('#inputBox').show();
+            $('#colorizedOutput').fadeOut(300, function() {
+                $('#inputBox').fadeIn(300);
+            });
         });
 
         $('#restoreAll').on('click', function() {

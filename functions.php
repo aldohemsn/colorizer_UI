@@ -72,7 +72,7 @@ function colorize($text, $language) {
     }
     
     if (curl_errno($ch)) {
-        exit('Curl error: ' . curl_error($ch));
+        exit('好像出了点问题。待会儿再试试吧。');
     }
     curl_close($ch);
 
