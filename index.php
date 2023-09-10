@@ -15,7 +15,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
 
 <!-- Header section of the webpage -->
 <header>
-    <h1>巧言·点色</h1>
+    <h1>巧言·<span style="font-family: 'liu_jian_mao_caoregular', sans-serif;">点色</span></h1>
     <h2>给语言来点颜色</h2>
 </header>
 

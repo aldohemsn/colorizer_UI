@@ -5,6 +5,14 @@ body {
     font-size: 1.2rem;                /* Default font size */
 }
 
+@font-face {
+    font-family: 'liu_jian_mao_caoregular';
+    src: url('fonts/liujianmaocao-regular-webfont.woff2') format('woff2'),
+         url('fonts/liujianmaocao-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Header styles */
 header {
     text-align: center;               /* Center the header content */
