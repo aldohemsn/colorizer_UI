@@ -40,5 +40,5 @@
     { "label": "Toggle Adverbs", "tags": ["rb", "rbr", "rbs", "wrb"] },
     { "label": "Toggle Numbers", "tags": ["cd"] }
   ],
-  "defaultSentence": "The quick brown fox jumped over the lazy dog."
+  "defaultSentence": "The young girl happily danced in the garden and admired the beautiful flowers."
 }
