@@ -1,54 +1,46 @@
+/* Global styles */
 body {
-    font-family: 'Arial', sans-serif;
-    padding: 20px;
-    font-size: 1.2rem;
-    background: linear-gradient(to right, #6A82FB, #FC5C7D);
+    font-family: 'Arial', sans-serif; /* Set the default font for the body */
+    padding: 20px;                    /* Padding around the body */
+    font-size: 1.2rem;                /* Default font size */
 }
 
+/* Header styles */
 header {
-    text-align: center;
-    margin-bottom: 30px;
-    background-color: #FC5C7D;
-    color: #FFF;
-    padding: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;               /* Center the header content */
+    margin-bottom: 30px;              /* Space below the header */
+    background-color: #FC5C7D;       /* Background color for the header */
+    color: #FFF;                     /* Text color for the header */
+    padding: 20px 0;                 /* Padding for the header */
+    border-radius: 10px;             /* Rounded corners for the header */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Shadow effect for the header */
 }
 
+/* Styles for input elements */
 input[type="submit"], #returnButton, #restoreAll {
-    background-color: #6A82FB;
-    transition: all 0.3s ease;
+    background-color: #6A82FB;       /* Background color for buttons */
+    transition: all 0.3s ease;       /* Smooth transition effect for hover state */
 }
 
 input[type="submit"]:hover, #returnButton:hover, #restoreAll:hover {
-    background-color: #4A62D1;
+    background-color: #4A62D1;       /* Darker background color on hover */
 }
 
-
+/* Textarea styling */
 #inputBox textarea {
-    font-family: Georgia, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: Georgia, "Apple Color Emoji", "Segoe UI Emoji"; /* Font family for the textarea */
+    height: 180px;                   /* Height of the textarea */
+    padding: 12px;                   /* Padding inside the textarea */
+    margin-bottom: 18px;             /* Margin below the textarea */
+    border-radius: 9px;              /* Rounded corners for the textarea */
+    font-size: 1.5rem;               /* Font size for the textarea */
+    width: 100%;                     /* Full width textarea */
 }
 
-p {
-    line-height: 1; 
-}
-
-.sentence-id {
-    margin-right: 16px; 
-}
-
-textarea {
-    height: 180px; 
-    padding: 12px; 
-    margin-bottom: 18px; 
-    border-radius: 9px; 
-    font-size: 1.5rem; 
-    width: 100%;
-}
-
+/* Styles for select and input elements */
 select, input[type="submit"] {
-    width: 100%;
-    margin-bottom: 10px;
+    width: 100%;                     /* Full width for select and input elements */
+    margin-bottom: 10px;             /* Margin below the select and input elements */
 }
 
 select {
@@ -178,16 +170,17 @@ header h2 {
     background-color: #0056b3;
 }
 
+/* Media query for screen sizes up to 600px */
 @media only screen and (max-width: 600px) {
     body {
-        font-size: 1.5rem; 
-        padding: 8px;
+        font-size: 1.5rem;           /* Increase font size for smaller screens */
+        padding: 8px;                /* Reduce padding for smaller screens */
     }
     textarea, select, input[type="submit"] {
-        margin-bottom: 10px;
+        margin-bottom: 10px;         /* Adjust margin for smaller screens */
     }
     #usageBanner {
-        display: none;
+        display: none;               /* Hide the usage banner on smaller screens */
     }
 }
 

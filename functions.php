@@ -1,19 +1,26 @@
 <?php
+// Configuration settings for the CoreNLP service
 $corenlp_url = getenv('CORENLP_URL');
 $corenlp_user = getenv('CORENLP_USER');
 $corenlp_password = getenv('CORENLP_PASSWORD');
 
+/**
+ * Custom error handler to provide more descriptive error messages.
+ * Specifically handles unauthorized access and other errors.
+ */
 function customErrorHandler($errno, $errstr, $errfile, $errline) {
     if (strpos($errstr, '401 Unauthorized') !== false) {
-        exit('服务授权失败');
+        exit('服务授权失败');  // Service authorization failed
     }
     exit("An error occurred: [$errno] $errstr<br>Error on line $errline in $errfile<br>");
 }
 set_error_handler("customErrorHandler");
 
+// List of supported languages and their configurations
 $languages = ['en', 'es', 'fr'];
 $jsonData = [];
 
+// Load language-specific configurations from JSON files
 foreach ($languages as $lang) {
     $fileContent = @file_get_contents($lang . '.json');
     if ($fileContent === false) {
@@ -25,6 +32,7 @@ foreach ($languages as $lang) {
     }
 }
 
+// Process user input and set default values if not provided
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $userText = $jsonData['en']['defaultSentence'];
 } else {

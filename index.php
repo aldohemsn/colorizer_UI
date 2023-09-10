@@ -3,19 +3,23 @@ include 'functions.php';
 $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
 ?>
 
+<!-- Setting the title and meta information for the webpage -->
 <title>巧言·点色 - 词性颜色标注与高级隐藏/显示交互</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
 
+<!-- Header section of the webpage -->
 <header>
     <h1>巧言·点色</h1>
     <h2>给语言来点颜色</h2>
 </header>
 
+<!-- Form for user input -->
 <form method="POST" class="noselect" id="inputBox" style="<?= (isset($colorizedHtml) && !empty($colorizedHtml)) ? 'display:none;' : '' ?>">
     <textarea name="text" placeholder="<?= htmlspecialchars($jsonData['en']['defaultSentence']); ?>"><?= htmlspecialchars($userText); ?></textarea>
     <select name="language">
         <?php 
+        // Define language names for the dropdown
         $languageNames = [
             'en' => '英文',
             'es' => '西班牙文',
@@ -29,21 +33,24 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
     <input type="submit" value="点色" id="submitButton">
 </form>
 
+<!-- Usage banner and instructions -->
 <a href="#" id="usageBanner" id="usageBannerContent">用法</a>
-
 <div id="usageInfo" style="display:none;" class="noselect">
     <?php foreach ($usageInfoData['usageInstructions'] as $instruction): ?>
         <p><?= $instruction; ?></p>
     <?php endforeach; ?>
 </div>
 
+<!-- Display colorized output -->
 <div class="noselect" id="colorizedOutput" style="<?= (isset($colorizedHtml) && !empty($colorizedHtml)) ? '' : 'display:none;' ?>">
     <?= $colorizedHtml; ?>
-    <div id="buttonGroup"> <!-- Add this div to group the buttons -->
+    <div id="buttonGroup"> <!-- Grouping the buttons -->
         <button id="restoreAll">重置</button>
         <button id="returnButton">返回</button>
     </div>
 </div>
+
+<!-- Include jQuery and custom scripts -->
 
 <script src="./jquery.min.js"></script>
 
