@@ -1,6 +1,11 @@
 <?php
 include 'functions.php';
-$usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
+
+// Load the XML content
+$xmlContent = file_get_contents('usageInfo.xml');
+
+// Parse the XML content using SimpleXML
+$usageInfoData = simplexml_load_string($xmlContent);
 ?>
 
 <!-- Setting the title and meta information for the webpage -->
@@ -36,23 +41,13 @@ $usageInfoData = json_decode(file_get_contents('usageInfo.json'), true);
 <!-- Usage banner and instructions -->
 <a href="#" id="usageBanner" id="usageBannerContent">用法</a>
 <div id="usageInfo" style="display:none;" class="noselect">
-    <h3>简介</h3>
-    <p><?= $usageInfoData['usageInstructions'][0]; ?></p>
-
-    <h3>主要功能</h3>
-    <?php for ($i = 1; $i <= 4; $i++): ?>
-        <p><?= $usageInfoData['usageInstructions'][$i]; ?></p>
-    <?php endfor; ?>
-
-    <h3>目标用户与用途</h3>
-    <?php for ($i = 5; $i <= 9; $i++): ?>
-        <p><?= $usageInfoData['usageInstructions'][$i]; ?></p>
-    <?php endfor; ?>
-
-    <h3>使用说明</h3>
-    <?php for ($i = 10; $i < count($usageInfoData['usageInstructions']); $i++): ?>
-        <p><?= $usageInfoData['usageInstructions'][$i]; ?></p>
-    <?php endfor; ?>
+    <?php foreach ($usageInfoData->children() as $instruction): ?>
+        <?php if ($instruction->getName() == "subtitle"): ?>
+            <h3><?= $instruction; ?></h3>
+        <?php else: ?>
+            <p><?= $instruction; ?></p>
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>
 
 
