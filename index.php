@@ -10,6 +10,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
 
 <!-- Setting the title and meta information for the webpage -->
 <title>译笺·点色 - 词性颜色标注与高级隐藏/显示交互</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
 
