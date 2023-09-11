@@ -16,7 +16,6 @@ $usageInfoData = simplexml_load_string($xmlContent);
 <!-- Header section of the webpage -->
 <header>
     <h1>巧言·<span style="font-family: 'liu_jian_mao_caoregular', sans-serif;">点色</span></h1>
-    <h2>给语言来点颜色</h2>
 </header>
 
 <!-- Form for user input -->
@@ -60,7 +59,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
     </div>
 </div>
 
-<p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #888;">请使用电脑体验完整功能</p>
+<p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #888;">体验完整功能请使用电脑</p>
 
 <!-- Include jQuery and custom scripts -->
 
