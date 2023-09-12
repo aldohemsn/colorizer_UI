@@ -74,6 +74,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
 <!-- Include jQuery and custom scripts -->
 
 <script src="./jquery.min.js"></script>
+<script src="./colorized-text-clicking.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -83,67 +84,18 @@ $usageInfoData = simplexml_load_string($xmlContent);
             'fr': <?= json_encode($jsonData['fr']['defaultSentence']); ?>
         };
 
+        const buttonsConfig = <?= json_encode($jsonData[$language]['buttons']); ?>;
+        const languageColors = <?= json_encode($jsonData[$language]['colors']); ?>;
+        initializeColorizedTextClicking(buttonsConfig, languageColors);
+
         $('select[name="language"]').change(function() {
             const language = $(this).val();
             $('textarea[name="text"]').val(defaultSentences[language]).attr('placeholder', defaultSentences[language]);
         });
 
-        $('.word').on('mouseenter', function() {
-            const pos = $(this).data('pos');
-            $(this).attr('title', 'POS: ' + pos);
-        }).on('click', function(e) {
-            const pos = $(this).data('pos').toLowerCase();
-            let relatedTags = [];
-
-            // Loop over the buttons configuration to find related tags
-            const buttonsConfig = <?= json_encode($jsonData[$language]['buttons']); ?>;
-            buttonsConfig.forEach(button => {
-                if (button.tags.includes(pos)) {
-                    relatedTags = relatedTags.concat(button.tags);
-                }
-            });
-
-            const sentenceElement = $(this).closest('p');
-
-            if (e.shiftKey && e.ctrlKey) {
-                // Shift+Ctrl+click will hide/show words that are not in the relatedTags group across the entire document.
-                $('.word').each(function() {
-                    if (!relatedTags.includes($(this).data('pos').toLowerCase())) {
-                        $(this).toggleClass('hidden');
-                    }
-                });
-            } else if (e.ctrlKey) {
-                // Ctrl+click will hide/show words that are not in the relatedTags group within the same sentence.
-                sentenceElement.find('span.word').each(function() {
-                    if (!relatedTags.includes($(this).data('pos').toLowerCase())) {
-                        $(this).toggleClass('hidden');
-                    }
-                });
-            } else {
-                // A regular click will hide/show words that are within the relatedTags group in the same sentence.
-                sentenceElement.find('span.word').each(function() {
-                    if (relatedTags.includes($(this).data('pos').toLowerCase())) {
-                        $(this).toggleClass('hidden');
-                    }
-                });
-            }
-        });
-
         document.addEventListener('dblclick', function(e) {
             e.preventDefault();
         }, false);
-
-        $('p').on('click', function(e) {
-            if (e.altKey) {
-                const sentenceElement = $(this);
-                sentenceElement.find('span.word').each(function() {
-                    const pos = $(this).data('pos');
-                    const defaultColor = <?= json_encode($jsonData[$language]['colors']); ?>[pos] || '#FFFFFF';
-                    $(this).css('background-color', defaultColor).removeClass('hidden');
-                });
-            }
-        });
-
 
         document.getElementById('usageBanner').addEventListener('click', function(e) {
             e.preventDefault();
@@ -167,9 +119,9 @@ $usageInfoData = simplexml_load_string($xmlContent);
 
         $('#restoreAll').on('click', function() {
             $('.word').each(function() {
-            const pos = $(this).data('pos');
-            const defaultColor = <?= json_encode($jsonData[$language]['colors']); ?>[pos] || '#FFFFFF';
-            $(this).css('background-color', defaultColor).removeClass('hidden');
+                const pos = $(this).data('pos');
+                const defaultColor = languageColors[pos] || '#FFFFFF';
+                $(this).css('background-color', defaultColor).removeClass('hidden');
             });
         });
     });
