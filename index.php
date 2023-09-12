@@ -73,30 +73,38 @@ $usageInfoData = simplexml_load_string($xmlContent);
 
 <!-- Include jQuery and custom scripts -->
 
+<!-- Include jQuery and custom scripts -->
 <script src="./jquery.min.js"></script>
 <script src="./colorized-text-clicking.js"></script>
 
 <script>
     $(document).ready(function() {
+        // Default sentences for different languages.
         const defaultSentences = {
             'en': <?= json_encode($jsonData['en']['defaultSentence']); ?>,
             'es': <?= json_encode($jsonData['es']['defaultSentence']); ?>,
             'fr': <?= json_encode($jsonData['fr']['defaultSentence']); ?>
         };
 
+        // Configuration of buttons and mapping of parts of speech to colors.
         const buttonsConfig = <?= json_encode($jsonData[$language]['buttons']); ?>;
         const languageColors = <?= json_encode($jsonData[$language]['colors']); ?>;
+
+        // Initialize the colorized text clicking interactions.
         initializeColorizedTextClicking(buttonsConfig, languageColors);
 
+        // Handle language change event to update the default sentence in the textarea.
         $('select[name="language"]').change(function() {
             const language = $(this).val();
             $('textarea[name="text"]').val(defaultSentences[language]).attr('placeholder', defaultSentences[language]);
         });
 
+        // Prevent default double click behavior.
         document.addEventListener('dblclick', function(e) {
             e.preventDefault();
         }, false);
 
+        // Toggle the display of usage information.
         document.getElementById('usageBanner').addEventListener('click', function(e) {
             e.preventDefault();
             var usageInfo = document.getElementById('usageInfo');
@@ -107,16 +115,19 @@ $usageInfoData = simplexml_load_string($xmlContent);
             }
         });
 
+        // Hide usage information when clicked.
         document.getElementById('usageInfo').addEventListener('click', function() {
             this.style.display = 'none';
         });
 
+        // Handle return button click to toggle between input and output views.
         $('#returnButton').on('click', function() {
             $('#colorizedOutput').fadeOut(300, function() {
                 $('#inputBox').fadeIn(300);
             });
         });
 
+        // Restore the original colors and visibility of all words.
         $('#restoreAll').on('click', function() {
             $('.word').each(function() {
                 const pos = $(this).data('pos');

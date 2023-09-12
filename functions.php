@@ -1,4 +1,5 @@
 <?php
+
 // Configuration settings for the CoreNLP service
 $corenlp_url = getenv('CORENLP_URL');
 $corenlp_user = getenv('CORENLP_USER');
@@ -7,8 +8,14 @@ $corenlp_password = getenv('CORENLP_PASSWORD');
 /**
  * Custom error handler to provide more descriptive error messages.
  * Specifically handles unauthorized access and other errors.
+ *
+ * @param int $errno Error number
+ * @param string $errstr Error message
+ * @param string $errfile File in which the error occurred
+ * @param int $errline Line number on which the error occurred
  */
-function customErrorHandler($errno, $errstr, $errfile, $errline) {
+function customErrorHandler($errno, $errstr, $errfile, $errline)
+{
     if (strpos($errstr, '401 Unauthorized') !== false) {
         exit('服务授权失败');  // Service authorization failed
     }
@@ -49,11 +56,20 @@ if (strlen($userText) > 800) {
     $userText .= " ...";
 }
 
-function colorize($text, $language) {
+/**
+ * Colorizes the given text based on its part-of-speech tags.
+ *
+ * @param string $text The text to be colorized
+ * @param string $language The language of the text (e.g., 'en', 'es', 'fr')
+ * @return string The colorized HTML representation of the text
+ */
+function colorize($text, $language)
+{
     global $jsonData, $corenlp_url, $corenlp_user, $corenlp_password;
     $colorScheme = $jsonData[$language]['colors'];
     $text = $text ?: $jsonData[$language]['defaultSentence'];
 
+    // Initialize cURL to communicate with the CoreNLP service
     $ch = curl_init();
     $getParams = http_build_query([
         'properties' => json_encode(['annotators' => 'tokenize,ssplit,pos', 'outputFormat' => 'json']),
@@ -68,9 +84,10 @@ function colorize($text, $language) {
         'Content-Type: application/x-www-form-urlencoded',
     ]);
 
+    // Execute the cURL request and handle the response
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    
+
     if ($httpCode >= 200 && $httpCode < 300) {
         // Successful response
         $data = json_decode($response, true);
@@ -78,12 +95,13 @@ function colorize($text, $language) {
         // Handle error based on HTTP status code
         exit('HTTP error: ' . $httpCode);
     }
-    
+
     if (curl_errno($ch)) {
         exit('好像出了点问题。待会儿再试试吧。');
     }
     curl_close($ch);
 
+    // Convert the CoreNLP response to colorized HTML
     $colorizedHtml = '';
     foreach ($data['sentences'] as $index => $sentence) {
         $colorizedHtml .= "<p><span class='sentence-id' data-sentence-id='{$index}'>" . ($index + 1) . ".</span> ";
@@ -93,7 +111,7 @@ function colorize($text, $language) {
             $colorizedHtml .= "<span class='word' data-pos='$pos' style='background-color:$color; border-radius: 5px; padding: 2px 5px; margin: 2px;'>{$token['word']}</span> ";
         }
         $colorizedHtml .= "</p>";
-        
+
         if (strpos(end($sentence['tokens'])['after'], "\n") !== false) {
             $colorizedHtml .= "<hr>";
         }
@@ -104,4 +122,5 @@ function colorize($text, $language) {
 
 $language = $_POST['language'] ?? 'en';
 $colorizedHtml = ($_SERVER['REQUEST_METHOD'] === 'POST') ? colorize($userText, $language) : '';
+
 ?>
