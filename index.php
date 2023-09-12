@@ -133,14 +133,17 @@ $usageInfoData = simplexml_load_string($xmlContent);
             e.preventDefault();
         }, false);
 
-        $('.sentence-id').on('click', function() {
-            const sentenceElement = $(this).closest('p');
-            sentenceElement.find('span.word').each(function() {
-                const pos = $(this).data('pos');
-                const defaultColor = <?= json_encode($jsonData[$language]['colors']); ?>[pos] || '#FFFFFF';
-                $(this).css('background-color', defaultColor).removeClass('hidden');
-            });
+        $('p').on('click', function(e) {
+            if (e.altKey) {
+                const sentenceElement = $(this);
+                sentenceElement.find('span.word').each(function() {
+                    const pos = $(this).data('pos');
+                    const defaultColor = <?= json_encode($jsonData[$language]['colors']); ?>[pos] || '#FFFFFF';
+                    $(this).css('background-color', defaultColor).removeClass('hidden');
+                });
+            }
         });
+
 
         document.getElementById('usageBanner').addEventListener('click', function(e) {
             e.preventDefault();
