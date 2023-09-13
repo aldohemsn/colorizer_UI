@@ -54,7 +54,10 @@ $usageInfoData = simplexml_load_string($xmlContent);
         <?php if ($instruction->getName() == "subtitle"): ?>
             <h3><?= $instruction; ?></h3>
         <?php else: ?>
-            <p><?= $instruction; ?></p>
+            <?php 
+            $underlineStyle = ($instruction->attributes()->underline == "true") ? 'text-decoration: underline;' : '';
+            ?>
+            <p style="<?= $underlineStyle ?>"><?= $instruction; ?></p>
         <?php endif; ?>
     <?php endforeach; ?>
 </div>

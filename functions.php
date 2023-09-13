@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Truncate the user's input without cutting a word in half and append " ..."
-if (strlen($userText) > 800) {
-    $userText = substr($userText, 0, 800);
+if (strlen($userText) > 1000) {
+    $userText = substr($userText, 0, 1000);
     $lastSpacePosition = strrpos($userText, ' ');
     if ($lastSpacePosition !== false) {
         $userText = substr($userText, 0, $lastSpacePosition);
