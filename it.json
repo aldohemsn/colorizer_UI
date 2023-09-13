@@ -1,0 +1,28 @@
+{
+  "colors": {
+    "ADJ": "#ffcc66",
+    "NOUN": "#cccccc",
+    "PROPN": "#cccccc",
+    "PRON": "#eeee77",
+    "VERB": "#ccff66",
+    "AUX": "#ccff66",
+    "ADP": "#ff99cc",
+    "CCONJ": "#cccc99",
+    "SCONJ": "#cccc99",
+    "DET": "#9999cc",
+    "NUM": "#66cc99",
+    "ADV": "#cc9999"
+  },
+  "buttons": [
+    { "label": "Toggle Adjectives", "tags": ["adj"] },
+    { "label": "Toggle Adverbs", "tags": ["adv"] },
+    { "label": "Toggle Verbs", "tags": ["verb", "aux"] },
+    { "label": "Toggle Nouns", "tags": ["noun", "propn"] },
+    { "label": "Toggle Pronouns", "tags": ["pron"] },
+    { "label": "Toggle Determiners", "tags": ["det"] },
+    { "label": "Toggle Conjunctions", "tags": ["cconj", "sconj"] },
+    { "label": "Toggle Numbers", "tags": ["num"] },
+    { "label": "Toggle Prepositions", "tags": ["adp"] }
+  ],
+  "defaultSentence": "Nonostante Maria abbia sempre amato la tranquillità del suo piccolo paese, domani, coraggiosamente, deciderà di trasferirsi a Roma per iniziare un nuovo, emozionante capitolo della sua vita."
+}
