@@ -1,6 +1,6 @@
 * * *
 
-译笺·点色 - 给语言来点颜色
+点色 - 给语言来点颜色
 =============
 
 这是一个基于PHP的简单颜色标注工具。
@@ -35,6 +35,7 @@
 * `CORENLP_PASSWORD`: CoreNLP服务的密码。
 * `AUTH_USER`: Apache认证的用户名。
 * `AUTH_PASS`: Apache认证的密码。
+* `UMAMI_SCRIPT`: UMAMI跟踪代码。
 
 开始使用
 ---------------
@@ -61,6 +62,7 @@
     -e CORENLP_PASSWORD='corenlp_password' \
     -e AUTH_USER='apache_user' \
     -e AUTH_PASS='apache_password' \
+    -e UMAMI_SCRIPT='umami_script' \
     colorizer_php_app
     ```
 
