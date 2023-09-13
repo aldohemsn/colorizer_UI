@@ -9,14 +9,16 @@ $usageInfoData = simplexml_load_string($xmlContent);
 ?>
 
 <!-- Setting the title and meta information for the webpage -->
-<title>译笺·点色 - 词性颜色标注与高级隐藏/显示交互</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
+<head>
+    <title>巧言·点色 - 词性颜色标注与高级隐藏/显示交互</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
 
 <!-- Header section of the webpage -->
 <header>
-    <h1>译笺 · <span style="font-family: 'liu_jian_mao_caoregular', sans-serif;">点色</span></h1>
+    <h1>巧言 · <span style="font-family: 'liu_jian_mao_caoregular', sans-serif;">点色</span></h1>
 </header>
 
 <!-- Form for user input -->
@@ -63,10 +65,9 @@ $usageInfoData = simplexml_load_string($xmlContent);
 <footer>
     <p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #888;">体验完整功能请使用电脑</p>
     <p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #888;">
-        <span style="font-family: 'liu_jian_mao_caoregular', sans-serif;">点色</span> is developed by 
-        <a href="https://www.aldo.fun" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">「译笺」</a>, 
-        and inspired by 
-        <a href="https://parts-of-speech.info/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Parts-of-speech.Info</a>
+        Developed by <a href="mailto:aldohe@msn.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Aldo HE</a>
+    <br> 
+        Inspired by <a href="https://parts-of-speech.info/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Parts-of-speech.Info</a>
     </p>
 </footer>
 
