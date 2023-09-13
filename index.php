@@ -10,6 +10,13 @@ $usageInfoData = simplexml_load_string($xmlContent);
 
 <!-- Setting the title and meta information for the webpage -->
 <head>
+    <!-- check for the existence of an environment variable -->
+    <?php
+    if (getenv('UMAMI_SCRIPT')) {
+        echo getenv('UMAMI_SCRIPT');
+    }
+    ?>
+
     <title>巧言·点色 - 词性颜色标注与高级隐藏/显示交互</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +72,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
 <footer>
     <p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #888;">体验完整功能请使用电脑</p>
     <p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #888;">
-        Developed by <a href="mailto:aldohe@msn.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Aldo HE</a>
+        Developed by <a href="mailto:aldohe@msn.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">何晓鸿</a>
     <br> 
         Inspired by <a href="https://parts-of-speech.info/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Parts-of-speech.Info</a>
     </p>

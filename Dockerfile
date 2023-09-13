@@ -27,6 +27,7 @@ COPY custom.conf /etc/apache2/sites-available/
 # Set the environment variables to empty values
 ENV AUTH_USER=
 ENV AUTH_PASS=
+ENV UMAMI_SCRIPT=
 
 # Enable the custom configuration and disable the default one
 RUN a2ensite custom.conf && a2dissite 000-default
