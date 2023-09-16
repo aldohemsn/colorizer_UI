@@ -20,6 +20,10 @@ $usageInfoData = simplexml_load_string($xmlContent);
     <title>巧言·点色 - 词性颜色标注与高级隐藏/显示交互</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="巧言·点色 - 文本颜色化工具">
+    <meta name="description" content="「巧言·点色」是一个基于词性标注的文本颜色化工具。它提供了交互式界面，用户可以输入文本、选择语言，并根据单词的词性标签获取颜色化的文本。此外，该工具还提供了基于词性标签的单词高级隐藏/显示交互功能。">
+    <meta name="keywords" content="文本颜色化, 词性标注, 交互式界面, 多语言支持, 词性颜色标注, 高级隐藏/显示交互, 语言学习, 翻译训练, 文本记忆, 语言教育">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 </head>
 
