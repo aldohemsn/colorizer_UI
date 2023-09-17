@@ -35,7 +35,7 @@ header h2 {
     margin-top: 10px;
 }
 
-/* Styles for input elements */
+/* Styles for input, returnButton and restoreAll elements */
 input[type="submit"], #returnButton, #restoreAll {
     background-color: #5a7a97; /* Derived from header color */
     color: #FFF;
@@ -44,6 +44,29 @@ input[type="submit"], #returnButton, #restoreAll {
 
 input[type="submit"]:hover, #returnButton:hover, #restoreAll:hover {
     background-color: #3a5a77; /* Darker shade for hover */
+}
+
+input[type="submit"] {
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+#returnButton, #restoreAll {
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-size: 1.5rem;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
 }
 
 /* Textarea styling */
@@ -69,15 +92,6 @@ select {
     font-size: 1.5rem;
     border-radius: 9px;
     border: 2px solid #5a7a97; /* Border color derived from header color */
-}
-
-input[type="submit"] {
-    padding: 12px 18px;
-    border-radius: 9px;
-    font-size: 1.5rem;
-    border: none;
-    color: #FFF;
-    cursor: pointer;
 }
 
 .hidden {
@@ -124,34 +138,10 @@ input[type="submit"] {
     color: #FFF;
 }
 
-#returnButton {
-    padding: 12px 18px;
-    border-radius: 9px;
-    font-size: 1.5rem;
-    border: none;
-    color: #FFF;
-    cursor: pointer;
-    margin-top: 20px;
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
 #buttonGroup {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-#returnButton, #restoreAll {
-    padding: 12px 18px;
-    border-radius: 9px;
-    font-size: 1.5rem;
-    border: none;
-    color: #FFF;
-    cursor: pointer;
-    flex: 1;
-    margin: 0 10px;
-    text-align: center;
-}
 
