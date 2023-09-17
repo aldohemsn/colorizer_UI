@@ -75,14 +75,9 @@ input[type="submit"] {
     padding: 12px 18px;
     border-radius: 9px;
     font-size: 1.5rem;
-    background-color: #007BFF;
     border: none;
     color: #FFF;
     cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
 }
 
 .hidden {
@@ -115,8 +110,7 @@ input[type="submit"]:hover {
     display: block;
     padding: 10px 20px;
     background-color: transparent;
-    color: #007BFF;
-    border: 2px solid #007BFF;
+    border: 2px solid #496a87;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
@@ -126,7 +120,7 @@ input[type="submit"]:hover {
 }
 
 #usageBanner:hover {
-    background-color: #007BFF;
+    background-color: #496a87;
     color: #FFF;
 }
 
@@ -134,7 +128,6 @@ input[type="submit"]:hover {
     padding: 12px 18px;
     border-radius: 9px;
     font-size: 1.5rem;
-    background-color: #007BFF;
     border: none;
     color: #FFF;
     cursor: pointer;
@@ -142,10 +135,6 @@ input[type="submit"]:hover {
     display: block;
     width: 100%;
     text-align: center;
-}
-
-#returnButton:hover {
-    background-color: #0056b3;
 }
 
 #buttonGroup {
@@ -158,16 +147,11 @@ input[type="submit"]:hover {
     padding: 12px 18px;
     border-radius: 9px;
     font-size: 1.5rem;
-    background-color: #007BFF;
     border: none;
     color: #FFF;
     cursor: pointer;
     flex: 1;
     margin: 0 10px;
     text-align: center;
-}
-
-#returnButton:hover, #restoreAll:hover {
-    background-color: #0056b3;
 }
 
