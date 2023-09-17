@@ -1,8 +1,8 @@
 /* Global styles */
 body {
-    font-family: 'Georgia', sans-serif; /* Set the default font for the body */
-    padding: 20px;                    /* Padding around the body */
-    font-size: 1.2rem;                /* Default font size */
+    font-family: 'Georgia', sans-serif;
+    padding: 20px;
+    font-size: 1.2rem;
 }
 
 @font-face {
@@ -21,7 +21,7 @@ header {
     color: #FFF;
     padding: 20px 0;
     border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Shadow effect for the header */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
@@ -37,41 +37,44 @@ header h2 {
 
 /* Styles for input elements */
 input[type="submit"], #returnButton, #restoreAll {
-    background-color: #6A82FB;       /* Background color for buttons */
-    transition: all 0.3s ease;       /* Smooth transition effect for hover state */
+    background-color: #5a7a97; /* Derived from header color */
+    color: #FFF;
+    transition: all 0.3s ease;
 }
 
 input[type="submit"]:hover, #returnButton:hover, #restoreAll:hover {
-    background-color: #4A62D1;       /* Darker background color on hover */
+    background-color: #3a5a77; /* Darker shade for hover */
 }
 
 /* Textarea styling */
 #inputBox textarea {
-    font-family: Georgia, "Apple Color Emoji", "Segoe UI Emoji"; /* Font family for the textarea */
-    height: 180px;                   /* Height of the textarea */
-    padding: 12px;                   /* Padding inside the textarea */
-    margin-bottom: 18px;             /* Margin below the textarea */
-    border-radius: 9px;              /* Rounded corners for the textarea */
-    font-size: 1.5rem;               /* Font size for the textarea */
-    width: 100%;                     /* Full width textarea */
+    font-family: Georgia, "Apple Color Emoji", "Segoe UI Emoji";
+    height: 180px;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 9px;
+    font-size: 1.5rem;
+    width: 100%;
+    border: 2px solid #5a7a97; /* Border color derived from header color */
 }
 
 /* Styles for select and input elements */
 select, input[type="submit"] {
-    width: 100%;                     /* Full width for select and input elements */
-    margin-bottom: 10px;             /* Margin below the select and input elements */
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 select {
-    padding: 6px 18px; 
-    font-size: 1.5rem; 
-    border-radius: 9px; 
+    padding: 6px 18px;
+    font-size: 1.5rem;
+    border-radius: 9px;
+    border: 2px solid #5a7a97; /* Border color derived from header color */
 }
 
 input[type="submit"] {
-    padding: 12px 18px; 
-    border-radius: 9px; 
-    font-size: 1.5rem; 
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-size: 1.5rem;
     background-color: #007BFF;
     border: none;
     color: #FFF;
@@ -90,9 +93,9 @@ input[type="submit"]:hover {
 .word {
     cursor: pointer;
     transition: background-color 0.2s;
-    font-size: 1.5rem; 
-    border-radius: 5px; 
-    line-height: 1.5em; 
+    font-size: 1.5rem;
+    border-radius: 5px;
+    line-height: 1.5em;
 }
 
 .word:hover {
@@ -111,22 +114,21 @@ input[type="submit"]:hover {
 #usageBanner {
     display: block;
     padding: 10px 20px;
-    background-color: transparent; /* Remove the background color */
-    color: #007BFF; /* Use the primary color for the text */
-    border: 2px solid #007BFF; /* Add a border to make it stand out */
+    background-color: transparent;
+    color: #007BFF;
+    border: 2px solid #007BFF;
     border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s; /* Add transition for color as well */
+    transition: background-color 0.3s, color 0.3s;
     font-size: 1.2rem;
-    margin: 20px auto; /* Center the banner */
-    text-align: center; /* Ensure the text is centered */
+    margin: 20px auto;
+    text-align: center;
 }
 
 #usageBanner:hover {
-    background-color: #007BFF; /* Change background on hover */
-    color: #FFF; /* Change text color on hover */
+    background-color: #007BFF;
+    color: #FFF;
 }
-
 
 #returnButton {
     padding: 12px 18px;
@@ -136,10 +138,10 @@ input[type="submit"]:hover {
     border: none;
     color: #FFF;
     cursor: pointer;
-    margin-top: 20px; /* Add some margin to the top for spacing */
-    display: block;   /* Make it a block element */
-    width: 100%;      /* Make it full width */
-    text-align: center; /* Center the text */
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
 }
 
 #returnButton:hover {
@@ -160,8 +162,8 @@ input[type="submit"]:hover {
     border: none;
     color: #FFF;
     cursor: pointer;
-    flex: 1; /* Allow buttons to take equal width */
-    margin: 0 10px; /* Add some margin between the buttons */
+    flex: 1;
+    margin: 0 10px;
     text-align: center;
 }
 
