@@ -37,6 +37,47 @@
 * `AUTH_PASS`: Apache认证的密码。
 * `UMAMI_SCRIPT`: UMAMI跟踪代码。
 
+Detailed Overview
+---------------------
+
+The "colorizer_UI" application is a web-based tool designed to colorize text based on part-of-speech tagging. It provides an interactive interface for users to input text, select a language, and view the colorized output.
+
+1. User Interface (index.php):
+
+Entry Point: The main interface allows users to input text and choose a language.
+
+Metadata: The webpage's title and meta information suggest its primary function as a text colorization tool based on part-of-speech tagging.
+
+Usage Instructions: Users can access a set of instructions on how to use the application, parsed from an XML file.
+
+Output Display: Once the text is processed, the colorized output is shown, with options to reset the colorization or return to the input view.
+
+2. Backend Processing (functions.php):
+
+Configuration: The application fetches settings for the CoreNLP service, a natural language processing tool, from environment variables.
+
+Supported Languages: The app supports multiple languages, including English, Spanish, French, and German. Language-specific configurations are loaded from JSON files.
+
+User Input: The user's input is processed, and if it exceeds a certain length, it's truncated for efficiency.
+
+Text Colorization:
+
+The colorize function communicates with the CoreNLP service to tokenize the input text and obtain part-of-speech tags.
+
+Using these tags and a predefined color scheme from the respective language's JSON file, the text is colorized.
+
+3. Interactive Features (colorized-text-clicking.js):
+
+Tooltip Display: Hovering over a word reveals its part-of-speech as a tooltip.
+
+Word Interactions:
+
+Clicking on a word allows users to hide or show related words based on their part-of-speech, either within the same sentence or across the entire document.
+
+Different types of clicks (e.g., regular, Ctrl+Click, Shift+Ctrl+Click) offer varied interaction patterns.
+
+Sentence Interaction: Using Alt+Click on a sentence, users can reset the background color of all words in that sentence to their default colors.
+
 开始使用
 ---------------
 
