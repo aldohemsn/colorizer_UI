@@ -41,7 +41,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
         $languageNames = [
             'en' => '英文',
             'es' => '西班牙文',
-            'fr' => '法文',
+            'fr' => '法文'
         ];
         foreach ($languages as $lang): 
         ?>
@@ -98,8 +98,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
         const defaultSentences = {
             'en': <?= json_encode($jsonData['en']['defaultSentence']); ?>,
             'es': <?= json_encode($jsonData['es']['defaultSentence']); ?>,
-            'fr': <?= json_encode($jsonData['fr']['defaultSentence']); ?>,
-            'de': <?= json_encode($jsonData['de']['defaultSentence']); ?>
+            'fr': <?= json_encode($jsonData['fr']['defaultSentence']); ?>
         };
 
         // Configuration of buttons and mapping of parts of speech to colors.
