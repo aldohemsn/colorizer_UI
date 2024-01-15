@@ -42,7 +42,6 @@ $usageInfoData = simplexml_load_string($xmlContent);
             'en' => '英文',
             'es' => '西班牙文',
             'fr' => '法文',
-            'de' => '德文'
         ];
         foreach ($languages as $lang): 
         ?>
