@@ -24,7 +24,7 @@ function customErrorHandler($errno, $errstr, $errfile, $errline)
 set_error_handler("customErrorHandler");
 
 // List of supported languages and their configurations
-$languages = ['en', 'es', 'fr', 'de'];
+$languages = ['en', 'es', 'fr'];
 $jsonData = [];
 
 // Load language-specific configurations from JSON files
