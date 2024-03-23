@@ -113,3 +113,5 @@ Sentence Interaction: Using Alt+Click on a sentence, users can reset the backgro
 ------------
 
 # aldo
+
+Inspired by [Parts-of-speech.Info](https://parts-of-speech.info/)
