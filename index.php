@@ -40,8 +40,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
         // Define language names for the dropdown
         $languageNames = [
             'en' => '英文',
-            'es' => '西班牙文',
-            'fr' => '法文'
+            'es' => '西班牙文'
         ];
         foreach ($languages as $lang): 
         ?>
@@ -97,8 +96,7 @@ $usageInfoData = simplexml_load_string($xmlContent);
         // Default sentences for different languages.
         const defaultSentences = {
             'en': <?= json_encode($jsonData['en']['defaultSentence']); ?>,
-            'es': <?= json_encode($jsonData['es']['defaultSentence']); ?>,
-            'fr': <?= json_encode($jsonData['fr']['defaultSentence']); ?>
+            'es': <?= json_encode($jsonData['es']['defaultSentence']); ?>
         };
 
         // Configuration of buttons and mapping of parts of speech to colors.
