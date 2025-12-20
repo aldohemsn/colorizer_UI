@@ -79,10 +79,13 @@ function colorize($text, $language)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $text);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Authorization: Basic ' . base64_encode("$corenlp_user:$corenlp_password"),
-        'Content-Type: application/x-www-form-urlencoded',
-    ]);
+    
+    // Set HTTP headers - only add Authorization if credentials are provided
+    $headers = ['Content-Type: application/x-www-form-urlencoded'];
+    if (!empty($corenlp_user) && !empty($corenlp_password)) {
+        $headers[] = 'Authorization: Basic ' . base64_encode("$corenlp_user:$corenlp_password");
+    }
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
     // Execute the cURL request and handle the response
     $response = curl_exec($ch);
